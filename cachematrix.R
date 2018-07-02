@@ -1,7 +1,5 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+# makecachMatrix doesn't just return the matrix. It returns stored functions and one of the functions simply returns the initial matrix.
+# The cache isn't actually a matrix, but functions that manipulate and return the matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
     # if(!is.matrix(x)) stop("Parameter must be a square matrix") #| nrow(x)!=ncol(x) # use when parameter is not specified
@@ -17,7 +15,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+# cacheSolve tries to determine if the result has been stored in makeCacheMatrix and returns the result or calculates the result if NULL
 
 cacheSolve <- function(x, ...) {
     # Return a matrix that is the inverse of 'x'
