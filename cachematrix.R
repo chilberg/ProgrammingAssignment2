@@ -4,7 +4,7 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-    #if(!is.matrix(x)) stop("Parameter must be a square matrix") #| nrow(x)!=ncol(x)
+    # if(!is.matrix(x)) stop("Parameter must be a square matrix") #| nrow(x)!=ncol(x) # use when parameter is not specified
     inversex <- NULL
     set <- function(setx) {
         x <<- setx
@@ -20,7 +20,8 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    # Return a matrix that is the inverse of 'x'
+    
     inversex <- x$getinverse()
     if (!is.null(inversex)) {
         message("cached result:")
