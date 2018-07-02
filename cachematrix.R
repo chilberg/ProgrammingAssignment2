@@ -4,17 +4,16 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-    if(!is.matrix(x)) stop("Parameter must be a square matrix") #| nrow(x)!=ncol(x)
-    
-    m <- NULL
-    set <- function(y) {
-        x <<- y
-        m <<- NULL
+    #if(!is.matrix(x)) stop("Parameter must be a square matrix") #| nrow(x)!=ncol(x)
+    inversex <- NULL
+    set <- function(setx) {
+        x <<- setx
+        inversex <<- NULL
     }
     get <- function() x
-    setmean <- function(mean) m <<- mean
-    getmean <- function() m
-    list(set=set, get=get, setmean=setmean, getmean=getmean)
+    setinverse <- function(inverse) inversex <<- inverse
+    getinverse <- function() inversex
+    list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
 }
 
 
@@ -22,8 +21,13 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-    
-    
-    
-    solve(x)
+    inversex <- x$getinverse()
+    if (!is.null(inversex)) {
+        message("cached result:")
+        return (inversex)
+    }
+    matrixdata <- x$get()
+    inversex <- solve(matrixdata, ...)
+    x$setinverse(inversex)
+    inversex
 }
